@@ -8,5 +8,5 @@ word = list(word_set)
 word.sort()
 word.sort(key = len)
 for w in word:
-    replacew = w.replace("\n", "")
-    print(replacew)
+    w = w.replace("\n", "")
+    print(w)

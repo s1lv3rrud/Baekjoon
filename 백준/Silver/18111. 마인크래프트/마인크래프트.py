@@ -1,32 +1,27 @@
 import sys
-
+from collections import Counter
 input = sys.stdin.readline
 
-n, m, b = map(int, input().split())
+n,m,b = map(int,input().split())
+ground = []
+for i in range(n):
+    ground += list(map(int,input().split()))
+sumground = sum(ground)
+ground = Counter(ground)
+mintime = 256 * 500 * 500 * 3 * 2
+minheight = 256
 
-ground = [list(map(int, input().split())) for i in range(n)]
-
-maxheight = max(max(ground))
-minheight = min(min(ground))
-
-mintime = 128000000
-height = 0
-
-for h in range(maxheight, minheight - 1, -1):
+for h in range(max(ground), min(ground)-1, -1):
     t_time = 0
-    t_add = 0
-    t_sub = 0
-    for i in range(n):
-        for j in range(m):
-            if ground[i][j] > h:
-                t_sub += ground[i][j]-h
-            else: # else vs elif
-                t_add += h-ground[i][j]
-    
-    if t_add <= b + t_sub:
-        t_time = t_sub*2+t_add
+    t_block = (h * n * m) - (sumground + b) # 필요한 블럭
+    if t_block <= 0:
+        for height, count in ground.items():
+            if height < h:
+                t_time += (h - height) * count
+            elif height >  h:
+                t_time += (height - h) * 2 * count
         if t_time < mintime:
+            minheight = h
             mintime = t_time
-            height = h
 
-print(mintime, height)
+print(mintime,minheight)

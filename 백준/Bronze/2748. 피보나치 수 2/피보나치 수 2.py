@@ -1,6 +1,5 @@
 import sys
 input = sys.stdin.readline
-sys.setrecursionlimit(10**6)
 
 fibo = [-1 for _ in range(91)]
 fibo[0] = 0

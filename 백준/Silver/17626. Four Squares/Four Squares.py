@@ -1,28 +1,17 @@
 import sys
 input = sys.stdin.readline
 
-import math
-
 n = int(input())
 
-# 1개
-if int(math.sqrt(n)) ** 2 == n:
-    print(1)
-    exit()
+sqrt = [-1] * (n+1)
+sqrt[0], sqrt[1] = 0, 1
+for i in range(2, n+1):
+    if(sqrt[i] == -1):
+        minnum = i
+        j = 1
+        while j*j <= i:
+            minnum = min(minnum, sqrt[i-j*j])
+            j += 1
+        sqrt[i] = minnum + 1
 
-# 2개
-for i in range(int(math.sqrt(n)), int(math.sqrt(n//2))-1, -1):
-    if int(math.sqrt(n-i*i)) ** 2 == n-i*i:
-        print(2)
-        exit()
-
-# 3개
-for i in range(int(math.sqrt(n)), int(math.sqrt(n//3))-1, -1):
-    for j in range(int(math.sqrt(n-i*i)), int(math.sqrt((n-i*i)//3))-1, -1):
-        if int(math.sqrt(n-i*i-j*j)) ** 2 == n-i*i-j*j:
-            print(3)
-            exit()
-
-# 4개
-print(4)
-
+print(sqrt[n])

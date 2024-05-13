@@ -52,7 +52,7 @@ int solution(vector<vector<int>> board) {
                 newCost = curCost + 100 + 500;
             }
 
-            if (cost[nx][ny][i] >= newCost) {
+            if (cost[nx][ny][i] > newCost) {
                 cost[nx][ny][i] = newCost;
                 q.push({ nx, ny, newCost, i });
             }

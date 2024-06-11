@@ -3,11 +3,11 @@
 using namespace std;
 
 int n, m;
-char board[11][11];
+char board[10][10];
 queue<tuple<int, int, int, int, int>> q;
 int dx[] = { 1, -1, 0, 0 };
 int dy[] = { 0, 0, 1, -1 };
-bool visited[11][11][11][11];
+bool visited[10][10][10][10];
 
 void move(int& nx, int& ny, int& distance, int& dir) {
 	while (board[nx + dx[dir]][ny + dy[dir]] != '#' && board[nx][ny] != 'O') {

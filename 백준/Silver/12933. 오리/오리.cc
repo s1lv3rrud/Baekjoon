@@ -23,13 +23,11 @@ int main() {
 			cout << -1;
 			return 0;
 		}
-		bool flag = false;
 		for (int i = 0; i < s.size(); i++) {
 			if(!ar[i] && s[i]==quack[cur]){
 				ar[i] = true;
 				if(cur==4){
 					cur = 0;
-					flag = true;
 				}
 				else cur++;
 			}
@@ -38,7 +36,7 @@ int main() {
 			cout << -1;
 			return 0;
 		}
-		if(flag) cnt++;
+		cnt++;
 		rep++;
 	}
 

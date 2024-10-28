@@ -18,7 +18,6 @@ int main() {
         cin >> B[i];
     }
 
-    // Sort A_with_index based on A values and B in ascending order
     sort(A_with_index.begin(), A_with_index.end());
     sort(B.begin(), B.end());
 

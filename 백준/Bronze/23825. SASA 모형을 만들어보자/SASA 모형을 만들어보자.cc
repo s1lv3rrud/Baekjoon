@@ -6,8 +6,7 @@ int main() {
   int n, m;
   cin >> n >> m;
 
-  int ans = min(n, m) / 2;
-  cout << ans;
+  cout << min(n, m) / 2;
 
   return 0;
 }
